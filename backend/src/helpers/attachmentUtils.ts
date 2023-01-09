@@ -16,7 +16,7 @@ export const AttachmentUtils = (attachmentId: string): attachmentData  => {
 	const putObject = targetBucket.getSignedUrl('putObject', {
 		Bucket: BucketName,
 		Key: attachmentId,
-		Expires: urlExpire
+		Expires: Number(urlExpire)
 	})
 	if(!putObject) throw new Error('Cannot set url')
 	uploadUrl = `https://${BucketName}.s3.amazonaws.com/${attachmentId}`
