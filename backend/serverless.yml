@@ -9,6 +9,8 @@ plugins:
   - serverless-plugin-tracing
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
+  
+frameworkVersion: ^3.25.1
 
 custom:
   documentation:
@@ -16,19 +18,18 @@ custom:
       info:
         version: v1.0.0
         title: Serverless Todo App
-        descrition: Serverless application for tasks creation
+        description: Serverless application for tasks creation
     models:
       - name: CreateTodoRequest
-        contetType: application/json
+        contentType: application/json
         schema: ${file(models/create-todo-model.json)}
       - name: UpdateTodoRequest
-        contetType: application/json
+        contentType: application/json
         schema: ${file(models/update-todo-model.json)}
 
 provider:
   name: aws
   runtime: nodejs12.x
-  lambdaHashingVersion: '20201221'
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
   apiGateway:
